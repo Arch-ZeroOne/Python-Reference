@@ -19,7 +19,7 @@ import cv2 as cv
 # Takes also a path argument
 # if you using webcams you will have to an integer argument (0)
 
-capture = cv.VideoCapture("Videos/bus.mp4")
+capture = cv.VideoCapture(0)
 
 # Videos is read frame by frame so we are gonna use a loop
 while True:
