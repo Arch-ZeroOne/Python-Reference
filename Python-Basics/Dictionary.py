@@ -1,4 +1,4 @@
-
+import pprint
 myCat = {
     'size' : 'fat',
     "color": "gray" , 
@@ -118,9 +118,55 @@ spam = {"name":'Zophie' , "age" : 7, "color":"brown"}
 - This is important because it prevented specific errors when accessing a non existing value
 """
 picnicItems = {"apples" : 5 , "cups" : 2}
-print(picnicItems.get("appless","Walay Value")) 
+# print(picnicItems.get("appless","Walay Value")) 
 
-#
+#? The Set Default(setDefault()) Method
+"""
+- This method will set a default value to a dictionary that has a value and a Key
+- This method only works if the key doesn't exist
+"""
+
+spam = {"name": "Pooka", "age" : 5}
+
+if 'color' not in spam:
+    spam['color'] = 'black'
+    
+# print(spam)
+
+
+# Doing the same with one life of code
+spam.setdefault("color","red")
+spam.setdefault('isMale',False)
+# print(spam)
 
 
 
+#? Nested Dictionaries and Lists
+
+allGuests = {
+    'Alice' : {"apples" : 5 , "pretzels": 12},
+    'Bob' : {"ham sandwiches": 3, "apples" : 2 },
+    'Carol' : {"cups" : 3 ,"apple pies" : 1 }
+    }
+
+pprint.pprint(allGuests)
+
+
+for x in allGuests.values():
+    if x == "apples":
+        print(x)
+
+
+
+def totalBrought(guest, item):
+    numBrought = 0
+    for key, value in guest.items():
+        # Gets the actual value or the default value if the specific key is not present (0)
+        
+        numBrought = numBrought + value.get(item,0)
+    return numBrought
+
+
+
+print("Total Apples:",str(totalBrought(allGuests,"apples")))
+# print(str(totalBrought(allGuests,"pretzels")))
